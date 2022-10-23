@@ -1,0 +1,19 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "developer",
+    "password": "developer",
+    "database": "my_task_db",
+    "synchronize": false,
+    "entities": [
+        "src/database/**/*.entity{.ts, .js}"
+    ],
+    "migrationsTableName": "custom_migration_table",
+    "migrations": [
+        "src/database/migrations/*.{js,ts}"
+    ],
+    "cli": {
+        "migrationsDir": "src/database/migrations/"
+    }
+}
