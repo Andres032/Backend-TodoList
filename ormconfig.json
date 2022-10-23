@@ -5,7 +5,7 @@
     "username": "developer",
     "password": "developer",
     "database": "my_task_db",
-    "synchronize": false,
+    "synchronize": true,
     "entities": [
         "src/database/**/*.entity{.ts, .js}"
     ],
