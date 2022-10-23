@@ -1,25 +1,25 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import * as entities from './entities/index';
+import * as entities from '../database/entities/index';
 
-const entitiesList = Object.values(entities);
-
-export const databaseService = TypeOrmModule.forRootAsync({
+const listEntities = Object.values(entities);
+export const databaseProvider = TypeOrmModule.forRootAsync({
     imports: [ConfigModule.forRoot({})],
     inject: [ConfigService],
     useFactory: (configService: ConfigService) => {
         return {
             type: 'postgres',
-            host: configService.get('PGHOST'),
+            host: configService.get<string>('PGHOST'),
             port: configService.get<number>('PGPORT'),
-            username: configService.get('PGUSER'),
-            password: configService.get('PGPASSWORD'),
-            database: configService.get('PGDATABASE'),
-            //logging: false,
-            entities: entitiesList,
+            username: configService.get<string>('PGUSER'),
+            password: configService.get<string>('PGPASSWORD'),
+            database: configService.get<string>('PGDATABASE'),
+            entities: listEntities,
             synchronize: false,
-            retryDelay: 3000,
-            retryAttempts: 10,
+            logging: false,
+            cache: {
+                duration: 1500,
+            },
         };
     },
 });
