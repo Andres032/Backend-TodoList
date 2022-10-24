@@ -37,7 +37,7 @@ export class TaskService {
         });
         const taskInstacia = this.TaskRepository.create({
             tittle: data.tittle,
-            description: data.desription,
+            description: data.description,
             author: data.author,
             status: false,
         });
@@ -53,7 +53,7 @@ export class TaskService {
         });
         await this.TaskRepository.update({id: task.id},{
             tittle: data.tittle,
-            description: data.desription,
+            description: data.description,
             author: data.author,
         });
 

@@ -4,7 +4,7 @@ export class CreateTask {
     @ApiProperty({type: String, required: true})
     tittle: string;
     @ApiProperty({type: String, required: true})
-    desription: string;
+    description: string;
     @ApiProperty({type: String, required: true})
     author: string;
 };
